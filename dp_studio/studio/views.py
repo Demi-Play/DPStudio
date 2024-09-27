@@ -24,6 +24,11 @@ class TrackViewSet(viewsets.ModelViewSet):
     queryset = Track.objects.all()
     serializer_class = TrackSerializer
 
+    def get_queryset(self):
+        # Фильтруем треки по ID проекта
+        project_id = self.kwargs['project_id']
+        return self.queryset.filter(project_id=project_id)
+
 class TrackListCreateView(generics.ListCreateAPIView):
     queryset = Track.objects.all()
     serializer_class = TrackSerializer

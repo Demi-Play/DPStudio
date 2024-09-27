@@ -11,7 +11,9 @@ class Project(models.Model):
         return self.name
 
 class Track(models.Model):
-    project = models.ForeignKey(Project, related_name='tracks', on_delete=models.CASCADE)
     name = models.CharField(max_length=255)
-    audio_file = models.FileField(upload_to='tracks/')  # или используйте другую модель для хранения аудио
+    audio_file = models.FileField(upload_to='audio/')
+    project = models.ForeignKey(Project, related_name='tracks', on_delete=models.CASCADE)
+    start_time = models.FloatField(default=0)  # Время начала в секундах
+    duration = models.FloatField(default=0)  # Продолжительность в секундах
     created_at = models.DateTimeField(auto_now_add=True)

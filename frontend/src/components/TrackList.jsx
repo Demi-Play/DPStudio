@@ -25,6 +25,7 @@ const TrackList = ({ projectId }) => {
         const formData = new FormData();
         formData.append('name', trackName);
         formData.append('audio_file', audioFile);
+        formData.append('project', projectId); // Добавлено поле project
 
         try {
             await axios.post(`http://127.0.0.1:8000/api/api/projects/${projectId}/tracks/`, formData, {
@@ -42,6 +43,15 @@ const TrackList = ({ projectId }) => {
 
     return (
         <div>
+            <div>
+                <h2>Track List</h2>
+                {tracks.map(track => (
+                    <div key={track.id}>
+                        <p>{track.name}</p>
+                        {/* Здесь можно добавить дополнительные элементы управления для трека */}
+                    </div>
+                ))}
+            </div>
             <h2>Tracks</h2>
             <ul>
                 {tracks.map(track => (
