@@ -5,6 +5,7 @@ from .views import ProjectViewSet, LoginView, LogoutView, ProjectCreateView, Tra
 router = DefaultRouter()
 router.register(r'projects', ProjectViewSet)
 # router.register(r'tracks', TrackViewSet)
+# router.register(r'projects/(?P<project_id>\d+)/tracks', TrackViewSet)
 
 urlpatterns = [
     path('api/', include(router.urls)),
