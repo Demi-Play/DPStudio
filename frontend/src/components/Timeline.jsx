@@ -8,9 +8,9 @@ const Timeline = ({ bpm, zoom }) => {
   const timelineMarks = Array.from({ length: totalBeats }, (_, i) => {
     const timeInSeconds = (i + 1) * secondsPerBeat;
     return (
-      <div key={i} className="timeline-mark" style={{ width: 100 * zoom }}> {/* Добавлен уникальный ключ */}
-        <div>{i % 2 === 0 ? `Beat ${i + 1}` : ''}</div> {/* Отображаем только каждый второй такт */}
-        <div>{timeInSeconds.toFixed(1)}s</div> {/* Отображаем секунды под тактами */}
+      <div key={i} className="timeline-mark" style={{ width: `${100 * zoom}px` }}>
+        <div>{i % 2 === 0 ? `Beat ${i + 1}` : ''}</div>
+        <div>{timeInSeconds.toFixed(1)}s</div>
       </div>
     );
   });

@@ -5,15 +5,17 @@ const Playlist = ({ tracks, onContextMenu }) => {
   return (
     <div className="playlist">
       <h3>Playlist</h3>
-      <div className="playlist-grid">
+      <div className="timeline">
         <Timeline bpm={120} />
-        {tracks.map((track) => (
+      </div>
+      <div className="playlist-grid">
+        {tracks.map((track, index) => (
           <div
             key={track.id}
             className="playlist-track"
             onContextMenu={(e) => onContextMenu(e, track)}
+            style={{ top: `${index * 40}px`, left: '0' }} // Измените на ваше усмотрение
           >
-            {/* Здесь может быть сетка или waveform, а названия убраны */}
             <div className="track-grid">Grid for {track.id}</div>
           </div>
         ))}
